@@ -1,7 +1,9 @@
 (function ($) {
     'use strict'
 
-var countriesDB =  [{name: "Lebanon", id: "LB", flag: "img/lebanon.jpg"}, 
+$(document).ready(function() {
+
+  var countriesDB =  [{name: "Lebanon", id: "LB", flag: "img/lebanon.jpg"}, 
                       {name: "Russia", id: "RU", flag: "img/russia.jpg"},  
                       {name: "South Africa", id: "ZA", flag: "img/southAfrica.jpg"},  
                       {name: "United States", id: "US", flag: "img/unitedStates.jpg"}, 
@@ -16,9 +18,7 @@ var countriesDB =  [{name: "Lebanon", id: "LB", flag: "img/lebanon.jpg"},
 var counter = 0;
 var genFlag = 0;
 var score = 0;
-var quizCountries = []
-
-$(document).ready(function() {
+var quizCountries = [];
 
 // AMMAP CODE - START
     AmCharts.ready(function() {
@@ -63,21 +63,21 @@ $(document).ready(function() {
 
 //YAZANE'S CODE
 
-    $("#startGame").click(function(event) {
+  $("#startGame").click(function(event) {
         event.preventDefault();
         init();
         playGame();
+    });
 
-        $("#mapdiv").on("click", function(event){
-          {
+    // Cannot end the game all the time
+    $("#mapdiv").on("click", function(event) {
             event.preventDefault();
             if(counter > 5) {
               alert("Good Job! Your Score Is: " + score + "/5");
               init();
-            }
-          };
-        });
-    });
+          }
+      });
+ 
 
   function init() {
     quizCountries = countriesDB;
@@ -111,6 +111,7 @@ $(document).ready(function() {
             $("#score").append("<h2>SCORE: " + ++score + "/5</h2>");
             quizCountries.splice(genFlag, 1);
             counter++;
+            console.log(counter);
             flag();
           }
 
