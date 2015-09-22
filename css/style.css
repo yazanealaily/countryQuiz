@@ -1,20 +1,26 @@
 body {
-	background-color: #ededed;
+	background-color: #e1e8f0;
 }
 
 #title {
 	height: 6rem;
-	background-color: #798186;
+	background-color: #e1e8f0;
 }
 
 #instructions {
 	height: 3rem;
-	background-color: #c41130;
+	background-color: #e62739;
 }
 
 #startGame {
-	background-color: white;
-	margin-left: 55rem;
+	background-color: #3b3a36;
+	border: none;
+	color: white;
+	width: 20rem;
+	height: 3rem;
+	font-size: 2rem;
+	font-weight: bold;
+	margin-left: 50rem;
 	margin-top: 1rem;
 }
 
@@ -28,7 +34,7 @@ body {
 }
 
 h1 {
-	color: white;
+	color: #e62739;
 	font-weight: bold;
 	letter-spacing: 0.1rem;
 	margin-top: 1rem;
@@ -39,8 +45,8 @@ h2 {
 	color: white;
 	font-weight: bold;
 	letter-spacing: 0.1rem;
-	margin-top: 0.5rem;
 	margin-left: 5rem;
+	margin-top: 0.5rem;
 }
 
 h3 {
@@ -86,12 +92,12 @@ img {
 }
 
 .correct {
-	background-color: rgba(124,170,117,1);
+	background-color: #dbe9d8;
 	color: white;
 }
 
 .incorrect {
-	background-color: rgba(196, 17, 48, 0.85);
+	background-color: #e62739;
 	color: white;
 }
 
@@ -100,10 +106,9 @@ img {
 }
 
 #score {
-	margin-top: 2rem;
 	margin-left: 7.5rem;
 	width: 25rem;
 	height: 4rem;
-	background-color: #c41130 ;
-	border: 0.3rem solid white;
+	background-color: #3b3a36;
+	border: 0.1rem solid #3b3a36;
 }

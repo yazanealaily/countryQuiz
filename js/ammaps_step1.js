@@ -51,7 +51,7 @@ $(document).ready(function() {
         map.areasSettings = {
             autoZoom: false,
             selectedColor: "#CC0000",
-            color: "#798186",
+            color: "#3b3a36",
             balloonText: "",
             selectable: true
         };
@@ -66,8 +66,10 @@ $(document).ready(function() {
     $("#startGame").click(function(event) {
         event.preventDefault();
         init();
-        playGame();        
+        playGame();
     });
+
+
 
 
   function init() {
@@ -113,6 +115,7 @@ $(document).ready(function() {
         });
   }
 
+  function endGame() {alert("OUI");}
 
   });
 });
