@@ -1,7 +1,7 @@
 (function ($) {
     'use strict'
 
-var quizCountries =  [{name: "Lebanon", id: "LB", flag: "img/lebanon.jpg"}, 
+var countriesDB =  [{name: "Lebanon", id: "LB", flag: "img/lebanon.jpg"}, 
                       {name: "Russia", id: "RU", flag: "img/russia.jpg"},  
                       {name: "South Africa", id: "ZA", flag: "img/southAfrica.jpg"},  
                       {name: "United States", id: "US", flag: "img/unitedStates.jpg"}, 
@@ -16,6 +16,7 @@ var quizCountries =  [{name: "Lebanon", id: "LB", flag: "img/lebanon.jpg"},
 var counter = 0;
 var genFlag = 0;
 var score = 0;
+var quizCountries = []
 
 $(document).ready(function() {
 
@@ -48,10 +49,11 @@ $(document).ready(function() {
          * selectedColor indicates color of the clicked area.
          */
         map.areasSettings = {
-            autoZoom: true,
+            autoZoom: false,
             selectedColor: "#CC0000",
             color: "#798186",
-            balloonText: ""
+            balloonText: "",
+            selectable: true
         };
 
         // write the map to container div
@@ -69,6 +71,7 @@ $(document).ready(function() {
 
 
   function init() {
+    quizCountries = countriesDB;
     counter = 1;
     score = 0;
     $("#score").append("<h2>SCORE: 0/5</h2>");
@@ -80,7 +83,7 @@ $(document).ready(function() {
   }
 
   function flag() {
-      genFlag = Math.floor(Math.random()*9) + 1;
+      genFlag = Math.floor(Math.random()*(quizCountries.length-1)) + 1;
       $("#flag").empty();
       $("#flag").append("<img src=" + quizCountries[genFlag].flag + ">");
   }
@@ -95,16 +98,18 @@ $(document).ready(function() {
             $("#q" + counter).addClass("correct");
             $("#score").empty();
             $("#score").append("<h2>SCORE: " + ++score + "/5</h2>");
+            quizCountries.splice(genFlag, 1);
             flag();
           }
 
             else {
               $("#q" + counter).removeClass("unanswered");
-              $("#q" + counter).addClass("incorrect");    
+              $("#q" + counter).addClass("incorrect");
+              quizCountries.splice(genFlag, 1);
               flag();
           }
 
-         return counter++;
+        counter++;
         });
   }
 
