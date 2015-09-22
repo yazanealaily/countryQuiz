@@ -67,16 +67,25 @@ $(document).ready(function() {
         event.preventDefault();
         init();
         playGame();
+
+        $("#mapdiv").on("click", function(event){
+          {
+            event.preventDefault();
+            if(counter > 5) {
+              alert("Good Job! Your Score Is: " + score + "/5");
+              init();
+            }
+          };
+        });
     });
-
-
-
 
   function init() {
     quizCountries = countriesDB;
     counter = 1;
     score = 0;
+    $("#score").empty();
     $("#score").append("<h2>SCORE: 0/5</h2>");
+    $("#flag").empty();
     for(var i = 1; i < 6; i++) {
       $("#q" + i).addClass("unanswered");
       $("#q" + i).removeClass("correct");
@@ -101,6 +110,7 @@ $(document).ready(function() {
             $("#score").empty();
             $("#score").append("<h2>SCORE: " + ++score + "/5</h2>");
             quizCountries.splice(genFlag, 1);
+            counter++;
             flag();
           }
 
@@ -108,14 +118,14 @@ $(document).ready(function() {
               $("#q" + counter).removeClass("unanswered");
               $("#q" + counter).addClass("incorrect");
               quizCountries.splice(genFlag, 1);
+              counter++;
               flag();
+
           }
 
-        counter++;
+
         });
   }
-
-  function endGame() {alert("OUI");}
 
   });
 });
