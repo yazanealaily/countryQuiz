@@ -69,16 +69,6 @@ var quizCountries = [];
         playGame();
     });
 
-    // Cannot end the game all the time
-    $("#mapdiv").on("click", function(event) {
-            event.preventDefault();
-            if(counter > 5) {
-              alert("Good Job! Your Score Is: " + score + "/5");
-              init();
-          }
-      });
- 
-
   function init() {
     quizCountries = countriesDB;
     counter = 1;
@@ -99,33 +89,33 @@ var quizCountries = [];
       $("#flag").append("<img src=" + quizCountries[genFlag].flag + ">");
   }
 
-  function playGame() {
-       flag();
-       
-        map.addListener("clickMapObject", function(event) {
-          
-          if(event.mapObject.id === quizCountries[genFlag].id) {
+function playGame() {
+    flag();
+
+    function clickMap(event) {
+
+        if (event.mapObject.id === quizCountries[genFlag].id) {
             $("#q" + counter).removeClass("unanswered");
             $("#q" + counter).addClass("correct");
             $("#score").empty();
             $("#score").append("<h2>SCORE: " + ++score + "/5</h2>");
             quizCountries.splice(genFlag, 1);
-            counter++;
-            console.log(counter);
             flag();
-          }
+        } else {
+            $("#q" + counter).removeClass("unanswered");
+            $("#q" + counter).addClass("incorrect");
+            quizCountries.splice(genFlag, 1);
+            flag();
+        }
 
-            else {
-              $("#q" + counter).removeClass("unanswered");
-              $("#q" + counter).addClass("incorrect");
-              quizCountries.splice(genFlag, 1);
-              counter++;
-              flag();
+        if (++counter === 6) {
+            map.removeListener(map, 'clickMapObject', clickMap)
+            alert("Good Job! Your Score Is: " + score + "/5");
+            init();
+        }
+    }
 
-          }
-
-
-        });
+    map.addListener("clickMapObject", clickMap);
   }
 
   });
