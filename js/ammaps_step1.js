@@ -14,10 +14,12 @@ var quizCountries =  [{name: "Lebanon", id: "LB", flag: "img/lebanon.jpg"},
                         ];
 
 var counter = 0;
+var genFlag = 0;
+var score = 0;
 
 $(document).ready(function() {
 
-// add all your code to this method, as this will ensure that page is loaded
+// AMMAP CODE - START
     AmCharts.ready(function() {
 
         // create AmMap object
@@ -52,47 +54,64 @@ $(document).ready(function() {
             balloonText: ""
         };
 
-        // let's say we want a small map to be displayed, so let's create it
-        map.smallMap = new AmCharts.SmallMap();
-
         // write the map to container div
         map.write("mapdiv");
 
+// AMMAP CODE - END
 
-        //Yazane's Code
+//YAZANE'S CODE
 
-        $("#startGame").on("click", function(){
-
-                $("#score").on("click", function(event){
-                    event.preventDefault()
-
-                        var genFlag = Math.floor(Math.random()*9) + 1;
-
-                        $("#flag").empty();
-                        $("#flag").append("<img src=" + quizCountries[genFlag].flag + ">");
-                        
-                        map.addListener("clickMapObject", function(event) {
-                            
-                            if(event.mapObject.id === quizCountries[genFlag].id) {
-                                counter++;
-                                console.log(counter);
-                                $("#q" + counter).removeClass("unanswered");
-                                $("#q" + counter).addClass("correct");
-                            }
-
-                            else {
-                                counter++;
-                                console.log(counter);
-                                $("#q" + counter).removeClass("unanswered");
-                                $("#q" + counter).addClass("incorrect");    
-                            }
-                        });
-                });
-
-        });
-
-
+    $("#startGame").click(function(event) {
+        event.preventDefault();
+        init();
+        playGame();        
     });
+
+
+  function init() {
+    counter = 1;
+    score = 0;
+    $("#score").append("<h2>SCORE: 0/5</h2>");
+    for(var i = 1; i < 6; i++) {
+      $("#q" + i).addClass("unanswered");
+      $("#q" + i).removeClass("correct");
+      $("#q" + i).removeClass("incorrect");
+    }
+  }
+
+  function flag() {
+      genFlag = Math.floor(Math.random()*9) + 1;
+      $("#flag").empty();
+      $("#flag").append("<img src=" + quizCountries[genFlag].flag + ">");
+  }
+
+  function playGame() {
+       flag();
+       
+        map.addListener("clickMapObject", function(event) {
+          
+          if(event.mapObject.id === quizCountries[genFlag].id) {
+            $("#q" + counter).removeClass("unanswered");
+            $("#q" + counter).addClass("correct");
+            $("#score").empty();
+            $("#score").append("<h2>SCORE: " + ++score + "/5</h2>");
+            flag();
+          }
+
+            else {
+              $("#q" + counter).removeClass("unanswered");
+              $("#q" + counter).addClass("incorrect");    
+              flag();
+          }
+
+         return counter++;
+        });
+  }
+
+
+  });
 });
 
 }(jQuery))
+
+

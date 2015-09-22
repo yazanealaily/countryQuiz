@@ -18,6 +18,11 @@ body {
 	margin-top: 1rem;
 }
 
+#next {
+	background-color: white;
+}
+
+
 .main {
 	margin-top: 6rem;
 }
@@ -30,11 +35,12 @@ h1 {
 }
 
 h2 {
-	font-size: 3rem;
+	font-size: 2rem;
 	color: white;
 	font-weight: bold;
 	letter-spacing: 0.1rem;
-	margin-top: 0.9rem;
+	margin-top: 0.5rem;
+	margin-left: 5rem;
 }
 
 h3 {
@@ -58,6 +64,7 @@ img {
 #flag {
 	height: 20rem;
 	margin-bottom: 7rem;
+	margin-left: 4.5rem;
 }
 
 #answers {
@@ -96,7 +103,7 @@ img {
 	margin-top: 2rem;
 	margin-left: 7.5rem;
 	width: 25rem;
-	height: 6rem;
+	height: 4rem;
 	background-color: #c41130 ;
 	border: 0.3rem solid white;
 }
