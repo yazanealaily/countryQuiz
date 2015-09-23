@@ -50,8 +50,8 @@ var quizCountries = [];
          */
         map.areasSettings = {
             autoZoom: false,
-            selectedColor: "#CC0000",
-            color: "#3b3a36",
+            selectedColor: "#963019",
+            color: "#16174f",
             balloonText: "",
             selectable: true
         };
@@ -109,8 +109,13 @@ function playGame() {
         }
 
         if (++counter === 6) {
-            map.removeListener(map, 'clickMapObject', clickMap)
-            alert("Good Job! Your Score Is: " + score + "/5");
+            map.removeListener(map, 'clickMapObject', clickMap);
+            $("#overlay").append("<h2>Good Job!</h2>");
+            $("#overlay").append("<h3 class='text-center'>Your Score Is: " + score + "/5</h3>");
+            $("#overlay-bkd").fadeIn(2000);
+            $("#overlay").fadeIn(2000).delay(1000);
+            $("#overlay").fadeOut(600);
+            $("#overlay-bkd").fadeOut(1000);
             init();
         }
     }

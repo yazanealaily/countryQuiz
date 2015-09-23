@@ -1,25 +1,24 @@
 body {
-	background-color: #e1e8f0;
+	background-color: #f6f1ed;
 }
 
 #title {
 	height: 6rem;
-	background-color: #e1e8f0;
+	background-color: #f6f1ed;
 }
 
 #instructions {
 	height: 3rem;
-	background-color: #e62739;
+	background-color: #667467;
 }
 
 #startGame {
-	background-color: #3b3a36;
+	background-color: #963019;
 	border: none;
 	color: white;
 	width: 20rem;
 	height: 3rem;
 	font-size: 2rem;
-	font-weight: bold;
 	margin-left: 50rem;
 	margin-top: 1rem;
 }
@@ -34,8 +33,7 @@ body {
 }
 
 h1 {
-	color: #e62739;
-	font-weight: bold;
+	color: #667467;
 	letter-spacing: 0.1rem;
 	margin-top: 1rem;
 }
@@ -43,7 +41,6 @@ h1 {
 h2 {
 	font-size: 2rem;
 	color: white;
-	font-weight: bold;
 	letter-spacing: 0.1rem;
 	margin-left: 5rem;
 	margin-top: 0.5rem;
@@ -92,12 +89,12 @@ img {
 }
 
 .correct {
-	background-color: #dbe9d8;
+	background-color: #667467;
 	color: white;
 }
 
 .incorrect {
-	background-color: #e62739;
+	background-color: #963019;
 	color: white;
 }
 
@@ -109,7 +106,37 @@ img {
 	margin-left: 7.5rem;
 	width: 25rem;
 	height: 4rem;
-	background-color: #3b3a36;
-	border: 0.1rem solid #3b3a36;
+	background-color: #963019;
+	border: 0.1rem solid #963019;
+}
+
+#overlay-bkd {
+	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+ 	 z-index: 5;
+	display: none;
+	background-color: #963019;
+	opacity: 0.8;
+}
+
+#overlay {
+	position: absolute;
+  	top: 40%;
+  	left: 39%;
+  	width: 20rem;
+  	height: 20rem;
+ 	 z-index: 10;
+	display: none;
+	background-color: #963019;
+	opacity: 1;
+	border-radius: 10%;
+}
+
+#overlay h2 {
+	margin-top: 5.5rem;
+	color: white;
 }
 
